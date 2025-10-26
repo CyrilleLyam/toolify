@@ -1,26 +1,11 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 
-const roboto = localFont({
-  src: [
-    {
-      path: "../../public/fonts/Roboto-Regular.ttf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/Roboto-Medium.ttf",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/Roboto-Bold.ttf",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-roboto",
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -39,8 +24,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${roboto.className} antialiased`}>{children}</body>
+    <html lang="en" className={manrope.variable}>
+      <body
+        className={`${manrope.className} antialiased bg-zinc-50 text-zinc-900`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
