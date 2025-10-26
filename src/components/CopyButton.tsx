@@ -11,7 +11,7 @@ export default function CopyButton({ text }: { text: string }) {
       type="button"
       onClick={handleCopy}
       disabled={!text}
-      className="rounded-md border border-zinc-700 px-4 py-2 text-sm text-zinc-300 hover:bg-zinc-800 transition disabled:opacity-40"
+      className="rounded-md border border-zinc-700 px-4 py-2 text-sm text-zinc-300 hover:bg-zinc-800 transition disabled:opacity-40 hover:cursor-pointer"
     >
       Copy
     </button>
