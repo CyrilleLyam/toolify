@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={manrope.variable}>
       <body
-        className={`${manrope.className} antialiased bg-zinc-50 text-zinc-900`}
+        className={`${manrope.className} antialiased bg-zinc-950 text-zinc-100 selection:bg-cyan-500/20 selection:text-cyan-400`}
       >
         {children}
       </body>
