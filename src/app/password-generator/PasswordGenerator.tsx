@@ -5,16 +5,15 @@ import CopyButton from '@/components/CopyButton';
 import InputBase from '@/components/ui/Input';
 import { CheckboxBase } from '@/components/ui/Checkbox';
 import { PasswordOptions } from '@/types/password';
+import { makePassword } from '@/helpers/generate-password';
 
-function makePassword(options: PasswordOptions) {
-  if (options.length < 5) options.length = 5;
-  const chars =
-    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{};:,.?/|~';
-  const array = new Uint32Array(options.length);
-  crypto.getRandomValues(array);
-  return Array.from(array, (num) => chars[num % chars.length]).join('');
-}
-
+type OptionId = Exclude<keyof PasswordOptions, 'length'>;
+const checkboxOptions: Array<{ id: OptionId; label: string }> = [
+  { id: 'AZ', label: 'A-Z' },
+  { id: 'az', label: 'a-z' },
+  { id: 'numbers', label: '0-9' },
+  { id: 'symbols', label: '!@#$%^&*' },
+];
 export function PasswordGenerator() {
   const [password, setPassword] = useState('');
   const [options, setOptions] = useState<PasswordOptions>({
@@ -46,46 +45,18 @@ export function PasswordGenerator() {
           />
         </div>
         <div className="flex gap-6">
-          <div className="flex items-center gap-2">
-            <CheckboxBase
-              id="AZ"
-              checked={options.AZ}
-              onChange={(e) => setOptions({ ...options, AZ: Boolean(e.target.checked) })}
-            />
-            <label htmlFor="AZ" className="text-sm font-medium">
-              A-Z
-            </label>
-          </div>
-          <div className="flex items-center gap-2">
-            <CheckboxBase
-              id="az"
-              checked={options.az}
-              onChange={(e) => setOptions({ ...options, az: Boolean(e.target.checked) })}
-            />
-            <label htmlFor="az" className="text-sm font-medium">
-              a-z
-            </label>
-          </div>
-          <div className="flex items-center gap-2">
-            <CheckboxBase
-              id="numbers"
-              checked={options.numbers}
-              onChange={(e) => setOptions({ ...options, numbers: Boolean(e.target.checked) })}
-            />
-            <label htmlFor="numbers" className="text-sm font-medium">
-              0-9
-            </label>
-          </div>
-          <div className="flex items-center gap-2">
-            <CheckboxBase
-              id="symbols"
-              checked={options.symbols}
-              onChange={(e) => setOptions({ ...options, symbols: Boolean(e.target.checked) })}
-            />
-            <label htmlFor="symbols" className="text-sm font-medium">
-              !@#$%^&*
-            </label>
-          </div>
+          {checkboxOptions.map(({ id, label }) => (
+            <div className="flex items-center gap-2" key={id}>
+              <CheckboxBase
+                id={id}
+                checked={options[id]}
+                onChange={(e) => setOptions({ ...options, [id]: Boolean(e.target.checked) })}
+              />
+              <label htmlFor={id} className="text-sm font-medium">
+                {label}
+              </label>
+            </div>
+          ))}
         </div>
       </div>
       <input

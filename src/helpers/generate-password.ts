@@ -18,3 +18,12 @@ export function generatePassword(options: PasswordOptions): string {
 
   return Array.from(array, (num) => chars[num % chars.length]).join('');
 }
+
+export function makePassword(options: PasswordOptions) {
+  if (options.length < 5) options.length = 5;
+  const chars =
+    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{};:,.?/|~';
+  const array = new Uint32Array(options.length);
+  crypto.getRandomValues(array);
+  return Array.from(array, (num) => chars[num % chars.length]).join('');
+}
