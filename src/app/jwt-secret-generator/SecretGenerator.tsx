@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import CopyButton from "@/components/CopyButton";
+import { useState } from 'react';
+import CopyButton from '@/components/CopyButton';
 
 function makeJwtSecret(byteLength = 64) {
   const bytes = new Uint8Array(byteLength);
   crypto.getRandomValues(bytes);
 
   const base64 = btoa(String.fromCharCode(...bytes))
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_")
-    .replace(/=+$/, "");
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=+$/, '');
   return base64;
 }
 
 export default function SecretGenerator() {
-  const [secret, setSecret] = useState("");
+  const [secret, setSecret] = useState('');
 
   function handleGenerate() {
     setSecret(makeJwtSecret(64));

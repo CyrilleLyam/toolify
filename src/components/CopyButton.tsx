@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 export default function CopyButton({ text }: { text: string }) {
   async function handleCopy() {

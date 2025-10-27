@@ -1,0 +1,30 @@
+# Ignore build and runtime artifacts
+.next
+dist
+build
+
+# Ignore dependency and lock files
+node_modules
+package-lock.json
+package.json
+postcss.config.mjs
+tsconfig.json
+yarn.lock
+
+# Ignore environment files and sensitive data
+.env
+.env.local
+.env.development
+.env.production
+
+# Ignore configuration files that are often managed by other tools
+.prettierrc*
+.prettierignore
+eslint.config.mjs
+
+# Ignore Next.js config files
+next.config.ts
+next.config.mjs
+
+# Ignore specific generated files
+src/generated/types.ts

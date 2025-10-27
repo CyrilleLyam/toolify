@@ -1,28 +1,24 @@
-import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Manrope } from 'next/font/google';
+import './globals.css';
 
 const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-manrope",
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
+  subsets: ['latin'],
+  variable: '--font-manrope',
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "Toolify",
-    template: "%s | Toolify",
+    default: 'Toolify',
+    template: '%s | Toolify',
   },
   description:
-    "Toolify — a collection of free, fast, and easy-to-use web tools for developers. Format JSON, convert data, encode text, and more — all in one place.",
+    'Toolify — a collection of free, fast, and easy-to-use web tools for developers. Format JSON, convert data, encode text, and more — all in one place.',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={manrope.variable}>
       <body

@@ -1,20 +1,20 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 export default function Home() {
   const tools = [
     {
-      title: "Password Generator",
+      title: 'Password Generator',
       description:
-        "Generate cryptographically secure passwords with customizable options. Perfect for creating strong, unique passwords for all your accounts.",
-      color: "text-green-400",
-      href: "/password-generator",
+        'Generate cryptographically secure passwords with customizable options. Perfect for creating strong, unique passwords for all your accounts.',
+      color: 'text-green-400',
+      href: '/password-generator',
     },
     {
-      title: "JWT Secret Generator",
+      title: 'JWT Secret Generator',
       description:
-        "Create cryptographically secure JWT signing secrets with algorithm-specific presets. Essential for JSON Web Token authentication.",
-      color: "text-blue-400",
-      href: "/jwt-secret-generator",
+        'Create cryptographically secure JWT signing secrets with algorithm-specific presets. Essential for JSON Web Token authentication.',
+      color: 'text-blue-400',
+      href: '/jwt-secret-generator',
     },
   ];
 
@@ -33,11 +33,11 @@ export default function Home() {
                   href={tool.href}
                   aria-label={tool.title}
                   className={[
-                    "group block rounded-xl border border-zinc-800 bg-zinc-900/60 p-6",
-                    "hover:border-zinc-700 hover:bg-zinc-900/80",
-                    "cursor-pointer transition duration-200 motion-reduce:transition-none",
-                    "focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/60",
-                  ].join(" ")}
+                    'group block rounded-xl border border-zinc-800 bg-zinc-900/60 p-6',
+                    'hover:border-zinc-700 hover:bg-zinc-900/80',
+                    'cursor-pointer transition duration-200 motion-reduce:transition-none',
+                    'focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/60',
+                  ].join(' ')}
                 >
                   <article>
                     <h2
@@ -45,9 +45,7 @@ export default function Home() {
                     >
                       {tool.title}
                     </h2>
-                    <p className="text-sm leading-relaxed text-zinc-400">
-                      {tool.description}
-                    </p>
+                    <p className="text-sm leading-relaxed text-zinc-400">{tool.description}</p>
                   </article>
                 </Link>
               </li>

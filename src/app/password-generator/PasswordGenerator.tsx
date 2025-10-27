@@ -1,25 +1,64 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import CopyButton from "@/components/CopyButton";
+import { useState } from 'react';
+import CopyButton from '@/components/CopyButton';
+import InputBase from '@/components/ui/Input';
+import { CheckboxBase } from '@/components/ui/Checkbox';
+import { PasswordOptions } from '@/types/password';
+import { makePassword } from '@/helpers/generate-password';
 
-function makePassword(length = 20) {
-  const chars =
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{};:,.?/|~";
-  const array = new Uint32Array(length);
-  crypto.getRandomValues(array);
-  return Array.from(array, (num) => chars[num % chars.length]).join("");
-}
-
-export default function PasswordGenerator() {
-  const [password, setPassword] = useState("");
+type OptionId = Exclude<keyof PasswordOptions, 'length'>;
+const checkboxOptions: Array<{ id: OptionId; label: string }> = [
+  { id: 'AZ', label: 'A-Z' },
+  { id: 'az', label: 'a-z' },
+  { id: 'numbers', label: '0-9' },
+  { id: 'symbols', label: '!@#$%^&*' },
+];
+export function PasswordGenerator() {
+  const [password, setPassword] = useState('');
+  const [options, setOptions] = useState<PasswordOptions>({
+    length: 20,
+    AZ: true,
+    az: true,
+    numbers: true,
+    symbols: false,
+  });
 
   function handleGenerate() {
-    setPassword(makePassword(20));
+    setPassword(makePassword(options));
   }
 
   return (
     <div className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
+      <div className="w-full grid grid-cols-1 mb-6 gap-4">
+        <div className="space-y-2">
+          <label htmlFor="Password Length" className="text-xs font-medium text-left block">
+            Password Length
+          </label>
+          <InputBase
+            className="focus-visible:ring-[1px]"
+            id="password-length"
+            type="number"
+            min={5}
+            value={options.length}
+            onChange={(e) => setOptions({ ...options, length: Number(e.target.value) })}
+          />
+        </div>
+        <div className="flex gap-6">
+          {checkboxOptions.map(({ id, label }) => (
+            <div className="flex items-center gap-2" key={id}>
+              <CheckboxBase
+                id={id}
+                checked={options[id]}
+                onChange={(e) => setOptions({ ...options, [id]: Boolean(e.target.checked) })}
+              />
+              <label htmlFor={id} className="text-sm font-medium">
+                {label}
+              </label>
+            </div>
+          ))}
+        </div>
+      </div>
       <input
         type="text"
         readOnly
