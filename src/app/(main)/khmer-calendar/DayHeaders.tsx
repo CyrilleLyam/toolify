@@ -5,7 +5,7 @@ export const DayHeaders = () => (
     {KHMER_DAYS.map((day, idx) => (
       <div
         key={idx}
-        className={`text-center text-white font-bold py-3 text-sm ${
+        className={`py-3 text-center text-sm font-bold text-white ${
           idx === 0 || idx === 6 ? 'bg-neutral-500' : 'bg-neutral-600'
         }`}
       >

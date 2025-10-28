@@ -8,9 +8,9 @@ export function CronGenerator() {
   const [cronExpression, setCronExpression] = useState('*/5 * * * *');
   return (
     <div className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
-      <div className="w-full grid grid-cols-1 mb-6 gap-4">
+      <div className="mb-6 grid w-full grid-cols-1 gap-4">
         <div className="space-y-2">
-          <label htmlFor="cron-expression" className="text-xs font-medium text-left block">
+          <label htmlFor="cron-expression" className="block text-left text-xs font-medium">
             Cron Expression
           </label>
           <div className="flex gap-2">
