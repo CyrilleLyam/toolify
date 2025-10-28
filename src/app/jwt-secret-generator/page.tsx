@@ -1,6 +1,10 @@
 import Link from 'next/link';
 import SecretGenerator from './SecretGenerator';
+import { Metadata } from 'next';
 
+export const metadata: Metadata = {
+  title: 'JWT Secret Generator',
+};
 export default function JwtSecretGeneratorPage() {
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-100 px-6 py-20">
