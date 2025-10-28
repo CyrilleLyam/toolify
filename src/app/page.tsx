@@ -16,6 +16,19 @@ export default function Home() {
       color: 'text-blue-400',
       href: '/jwt-secret-generator',
     },
+    {
+      title: 'Cron Expression Builder',
+      description:
+        'Easily create and validate cron expressions for scheduling tasks. Supports common patterns and custom configurations.',
+      color: 'text-neutral-200',
+      href: '/cron-expression',
+    },
+    {
+      title: 'Khmer Calendar',
+      description: 'Khmer calendar do for hobbies',
+      color: 'text-yellow-600',
+      href: '/khmer-calendar',
+    },
   ];
 
   return (
@@ -26,14 +39,14 @@ export default function Home() {
         </h1>
 
         <section aria-labelledby="tools-heading">
-          <ul role="list" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <ul role="list" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 content-stretch ">
             {tools.map((tool) => (
               <li key={tool.title}>
                 <Link
                   href={tool.href}
                   aria-label={tool.title}
                   className={[
-                    'group block rounded-xl border border-zinc-800 bg-zinc-900/60 p-6',
+                    'h-full group block rounded-xl border border-zinc-800 bg-zinc-900/60 p-6',
                     'hover:border-zinc-700 hover:bg-zinc-900/80',
                     'cursor-pointer transition duration-200 motion-reduce:transition-none',
                     'focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/60',
