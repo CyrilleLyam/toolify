@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Manrope } from 'next/font/google';
 import './globals.css';
+import { SWRProvider } from './swr-provider';
 
 const manrope = Manrope({
   subsets: ['latin'],
@@ -24,7 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={`${manrope.className} bg-zinc-950 text-zinc-100 antialiased selection:bg-cyan-500/20 selection:text-cyan-400`}
       >
-        {children}
+        <SWRProvider>{children}</SWRProvider>
       </body>
     </html>
   );
