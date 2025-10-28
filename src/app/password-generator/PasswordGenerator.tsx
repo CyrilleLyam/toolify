@@ -30,9 +30,9 @@ export function PasswordGenerator() {
 
   return (
     <div className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-6">
-      <div className="w-full grid grid-cols-1 mb-6 gap-4">
+      <div className="mb-6 grid w-full grid-cols-1 gap-4">
         <div className="space-y-2">
-          <label htmlFor="Password Length" className="text-xs font-medium text-left block">
+          <label htmlFor="Password Length" className="block text-left text-xs font-medium">
             Password Length
           </label>
           <InputBase
@@ -64,13 +64,13 @@ export function PasswordGenerator() {
         readOnly
         value={password}
         placeholder="Click Generate"
-        className="w-full bg-zinc-950 border border-zinc-800 rounded-md p-3 text-center text-zinc-100 font-mono text-sm mb-4"
+        className="mb-4 w-full rounded-md border border-zinc-800 bg-zinc-950 p-3 text-center font-mono text-sm text-zinc-100"
       />
       <div className="flex justify-center gap-3">
         <button
           type="button"
           onClick={handleGenerate}
-          className="rounded-md bg-green-500 px-4 py-2 text-sm font-semibold text-black hover:bg-green-400 transition"
+          className="rounded-md bg-green-500 px-4 py-2 text-sm font-semibold text-black transition hover:bg-green-400"
         >
           Generate
         </button>

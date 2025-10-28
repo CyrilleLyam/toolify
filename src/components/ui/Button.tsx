@@ -73,7 +73,7 @@ const ButtonBase = React.forwardRef<HTMLButtonElement, ButtonBaseProps>(
         {isLoading ? (
           <>
             <svg
-              className="animate-spin h-full w-auto"
+              className="h-full w-auto animate-spin"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"

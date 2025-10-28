@@ -8,11 +8,18 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
-    "format:fix": "prettier --write . && eslint --fix ."
+    "format:fix": "prettier --write . && eslint --fix .",
+    "prepare": "simple-git-hooks"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged",
     "pre-push": "npm run format"
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "lucide-react": "^0.548.0",
@@ -26,6 +33,8 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
+    "eslint": "^9.38.0",
+    "eslint-config-next": "^16.0.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-prettier": "^5.5.4",

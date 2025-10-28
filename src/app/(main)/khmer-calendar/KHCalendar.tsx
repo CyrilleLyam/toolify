@@ -23,10 +23,10 @@ export default function KhmerCalendar() {
 
   return (
     <div
-      className="w-[80%] p-6 bg-linear-to-br from-orange-50/5 to-neutral-500/90 rounded-lg shadow-lg"
+      className="mx-auto max-w-5xl rounded-xl bg-linear-to-br from-orange-50/5 to-neutral-700/90 p-4 shadow-lg sm:p-6"
       style={{ fontFamily: "'Kantumruy Pro', sans-serif" }}
     >
-      <div className="w-full flex gap-6">
+      <div className="flex flex-col gap-6 lg:flex-row">
         {/* Left Column - Calendar */}
         <div className="min-w-7/12">
           <CalendarHeader
@@ -48,9 +48,9 @@ export default function KhmerCalendar() {
           />
 
           {/* Footer info */}
-          <div className="mt-6 pt-4 border-t border-orange-200 text-center text-xs text-white">
-            <p>ប្រតិទិនខ្មែរ</p>
-            <p className="mt-1">{today.toLocaleDateString('km-KH')}</p>
+          <div className="mt-6 border-t border-orange-200 pt-4 text-center text-xs text-white">
+            <p className="text-center text-gray-300">ប្រតិទិនខ្មែរ</p>
+            <p className="mt-1 text-gray-400">{today.toLocaleDateString('km-KH')}</p>
           </div>
         </div>
 

@@ -28,13 +28,13 @@ export default function SecretGenerator() {
         readOnly
         value={secret}
         placeholder="Click Generate"
-        className="w-full bg-zinc-950 border border-zinc-800 rounded-md p-3 text-center text-zinc-100 font-mono text-xs mb-4 break-all"
+        className="mb-4 w-full rounded-md border border-zinc-800 bg-zinc-950 p-3 text-center font-mono text-xs break-all text-zinc-100"
       />
       <div className="flex justify-center gap-3">
         <button
           type="button"
           onClick={handleGenerate}
-          className="rounded-md bg-blue-500 px-4 py-2 text-sm font-semibold text-black hover:bg-blue-400 transition hover:cursor-pointer"
+          className="rounded-md bg-blue-500 px-4 py-2 text-sm font-semibold text-black transition hover:cursor-pointer hover:bg-blue-400"
         >
           Generate
         </button>

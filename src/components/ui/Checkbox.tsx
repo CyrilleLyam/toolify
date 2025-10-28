@@ -63,7 +63,7 @@ const CheckboxBase = React.forwardRef<HTMLInputElement, CheckboxBaseProps>(
           checked={checkedValue}
           onChange={handleChange}
           className={cn(
-            'peer shrink-0 appearance-none rounded-sm border border-input bg-transparent shadow-xs transition-shadow outline-none',
+            'peer border-input shrink-0 appearance-none rounded-sm border bg-transparent shadow-xs transition-shadow outline-none',
             'dark:bg-input/30',
             'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
             'checked:text-primary-foreground',
@@ -77,7 +77,7 @@ const CheckboxBase = React.forwardRef<HTMLInputElement, CheckboxBaseProps>(
         />
         <svg
           className={cn(
-            'pointer-events-none absolute inset-0 text-primary-foreground opacity-0 peer-checked:opacity-100 transition-opacity',
+            'text-primary-foreground pointer-events-none absolute inset-0 opacity-0 transition-opacity peer-checked:opacity-100',
             sizeStyles[checkboxSize]
           )}
           viewBox="0 0 16 16"

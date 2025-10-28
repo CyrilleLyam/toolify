@@ -22,37 +22,35 @@ export const CalendarGrid: React.FC<CalendarGridProps> = ({
   today,
   onSelectDay,
 }) => (
-  <div className="grid grid-cols-7 gap-0 p-2">
+  <div className="grid grid-cols-7 gap-0.5 rounded-lg border border-white/10 bg-linear-to-br from-neutral-900/40 to-neutral-800/80 p-2 shadow-inner sm:gap-1">
     {calendarDays.map((day, idx) => {
       const isWeekend = khmerCalendarUtils.isWeekend(idx);
       const isCurrentDay = khmerCalendarUtils.isToday(day, year, month, today);
       const holiday = khmerCalendarUtils.getHolidayForDay(holidays, year, month, day);
+      const isSelected = selectedDay === day;
 
       return (
         <div
           key={idx}
           onClick={() => day && onSelectDay(day)}
-          className={`
-            min-h-20 p-2 rounded border flex flex-col items-center justify-center cursor-pointer transition
-            ${
-              day === null
-                ? 'bg-transparent'
-                : isCurrentDay
-                  ? 'bg-red-500 text-white font-bold border-red-600 shadow-lg'
-                  : selectedDay === day
-                    ? 'bg-neutral-500 border-green-500 font-bold'
+          className={`flex aspect-square cursor-pointer flex-col items-center justify-center rounded-md text-sm font-medium transition-all duration-150 select-none sm:text-base ${
+            day === null
+              ? 'cursor-default bg-transparent'
+              : isCurrentDay
+                ? 'scale-[1.02] bg-orange-600/90 font-bold text-white shadow-md ring-2 ring-orange-400/80'
+                : isSelected
+                  ? 'scale-[1.01] border border-white/10 bg-neutral-700/80 text-white shadow-sm'
+                  : holiday
+                    ? 'border border-orange-700/40 bg-neutral-700/30 text-orange-400 hover:bg-orange-900/20'
                     : isWeekend
-                      ? ' border-red-200 hover:bg-red-150'
-                      : ' border-gray-200 hover:bg-neutral-500'
-            }
-          `}
+                      ? 'bg-neutral-800/60 text-red-300 hover:bg-neutral-700/80'
+                      : 'bg-neutral-900/40 text-gray-300 hover:bg-neutral-700/60'
+          } `}
         >
           {day && (
             <>
-              <span className="font-semibold text-lg">
-                {khmerCalendarUtils.toKhmerNumeral(day)}
-              </span>
-              {holiday && <span className="text-xs mt-1 text-orange-600 font-bold">🎉</span>}
+              <span className="font-semibold">{khmerCalendarUtils.toKhmerNumeral(day)}</span>
+              {holiday && <span className="animate-bounce-slow mt-1 text-[10px]">🎉</span>}
             </>
           )}
         </div>
