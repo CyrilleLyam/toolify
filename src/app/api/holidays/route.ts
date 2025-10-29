@@ -16,7 +16,7 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'Missing year parameter' }, { status: 400 });
   }
 
-  const apiKey = process.env.HOLIDAY_API_KEY || 'te0ILbuhNf7UO2kevw6e910q8GPfnnQB'; // || "d935113b-7df2-4015-bb11-9efabec7b2ef";
+  const apiKey = process.env.HOLIDAY_API_KEY;
   if (!apiKey) {
     return NextResponse.json({ error: 'Missing API key' }, { status: 500 });
   }
